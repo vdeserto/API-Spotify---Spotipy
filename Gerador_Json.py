@@ -1,0 +1,82 @@
+import json
+import spotipy
+
+from spotipy.oauth2 import SpotifyClientCredentials
+
+cid ="ec3e5e205b634356b5e4b82496b72dec"
+
+secret = "c4decac528e349c9b17d5662065dcfb5"
+
+client_credentials_manager = SpotifyClientCredentials(client_id=cid, client_secret=secret)
+
+sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
+
+arquivo = open("dados.json", "w")
+arquivo2 = open('cantores.txt', 'r')
+
+
+art = '7HGNYPmbDrMkylWqeFCOIQ'
+alb = '0bW7duZq6GtoM8nEwtbc6F'
+
+arquivo.writelines ("[")
+
+def info_artist(id):
+    r = sp.artist(id)
+    result_json = str(sp.artist(id))
+    result_json = result_json.replace("\'", "\"")
+    result_json = result_json.replace("None", "null")
+    result_json = result_json.replace("True", "\"True\"")
+    result_json = result_json.replace("False", "\"False\"")
+    arquivo.writelines ("{\""+r["name"]+"\": [")
+    arquivo.writelines (result_json)
+    show_artist_albums(id)
+
+
+def show_artist_albums(id):
+    lista = []
+    albums = sp.artist_albums(id, album_type='album')
+    lista.extend(albums['items'])
+    while albums['next']:
+    	albums = sp.next(albums)
+    	lista.extend(albums['items'])
+    unique = set()  # skip duplicate albums
+    for album in lista:
+        name = album['name'].lower()
+        if not name in unique:
+            info_album(album['id'])
+            unique.add(name)
+    arquivo.writelines ("]}")
+
+def info_album(id):
+    arquivo.writelines (", ")
+    result_json2 = str(sp.album(id))
+    result_json2 = result_json2.replace("\'", "\"")
+    result_json2 = result_json2.replace("None", "null")
+    result_json2 = result_json2.replace("True", "\"True\"")
+    result_json2 = result_json2.replace("False", "\"False\"")
+    arquivo.writelines (result_json2)
+
+
+def search(q):
+    lista = []
+    results = sp.search(q, type='artist', limit=1)
+    results = results['artists']
+    results = results['items']
+    for artist in results:
+    	info_artist(artist['id'])
+
+
+i = 0
+for cantor in arquivo2:
+    if(i !=0):
+        arquivo.writelines (", ")
+    search(cantor)
+    i = i + 1
+
+
+arquivo.writelines ("]")
+arquivo.close()
+arquivo3 = json.loads(open("dados.json", "r").read())
+print(arquivo3[1])
+
+#arquivo3 = json.dumps(open("dados.json", "r").read())
