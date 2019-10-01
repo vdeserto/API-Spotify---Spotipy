@@ -22,13 +22,10 @@ arquivo.writelines ("[")
 
 def info_artist(id):
     r = sp.artist(id)
-    result_json = str(sp.artist(id))
-    result_json = result_json.replace("\'", "\"")
-    result_json = result_json.replace("None", "null")
-    result_json = result_json.replace("True", "\"True\"")
-    result_json = result_json.replace("False", "\"False\"")
+    result_json = sp.artist(id)
+    result = json.dumps(result_json)
     arquivo.writelines ("{\""+r["name"]+"\": [")
-    arquivo.writelines (result_json)
+    arquivo.writelines (result)
     show_artist_albums(id)
 
 
@@ -49,12 +46,9 @@ def show_artist_albums(id):
 
 def info_album(id):
     arquivo.writelines (", ")
-    result_json2 = str(sp.album(id))
-    result_json2 = result_json2.replace("\'", "\"")
-    result_json2 = result_json2.replace("None", "null")
-    result_json2 = result_json2.replace("True", "\"True\"")
-    result_json2 = result_json2.replace("False", "\"False\"")
-    arquivo.writelines (result_json2)
+    result_json2 = sp.album(id)
+    result = json.dumps(result_json2)
+    arquivo.writelines (result)
 
 
 def search(q):
@@ -63,7 +57,8 @@ def search(q):
     results = results['artists']
     results = results['items']
     for artist in results:
-    	info_artist(artist['id'])
+        info_artist(artist['id'])
+
 
 
 i = 0
@@ -77,6 +72,6 @@ for cantor in arquivo2:
 arquivo.writelines ("]")
 arquivo.close()
 arquivo3 = json.loads(open("dados.json", "r").read())
-print(arquivo3[1])
+print(arquivo3[0])
 
 #arquivo3 = json.dumps(open("dados.json", "r").read())
