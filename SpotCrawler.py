@@ -9,7 +9,7 @@ secret = "c4decac528e349c9b17d5662065dcfb5"
 client_credentials_manager = SpotifyClientCredentials(client_id=cid, client_secret=secret)
 sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
-art = 'spotify:artist:7dGJo4pcD2V6oG8kP0tJRR'
+art = '7dGJo4pcD2V6oG8kP0tJRR'
 art2 = 'spotify:artist:3fMbdgg4jU18AjLCKBhRSm'
 tra = 'spotify:track:4xkOaSrkexMciUUogZKVTS'
 alb = 'spotify:album:1ATL5GLyefJaxhQzSPVrLX'
@@ -110,10 +110,11 @@ def search(q):
         lista.extend(aux['items'])
         results2 = aux
     i = 0
-    for artist in lista[:10]:
+    for artist in lista[:20]:
         i = i + 1
-        print(i, artist['id'])
+        print(i, artist['name'])
+        print(artist['popularity'], "\n")
 
-serarch(art)
+search("Eliana")
 
 arquivo.close()
