@@ -114,6 +114,6 @@ def search(q):
         i = i + 1
         print(i, artist['id'])
 
-info_album(alb)
+serarch(art)
 
 arquivo.close()
