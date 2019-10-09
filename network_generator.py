@@ -1,5 +1,4 @@
-import sys
-import re
+import json
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
 
@@ -8,3 +7,8 @@ secret = "c4decac528e349c9b17d5662065dcfb5"
 
 client_credentials_manager = SpotifyClientCredentials(client_id=cid, client_secret=secret)
 sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
+
+arquivo = json.loads(open("dados.json", "r").read())
+
+for cantor in arquivo:
+    print(cantor[])
