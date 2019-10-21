@@ -72,6 +72,3 @@ for cantor in arquivo2:
 arquivo.writelines ("]")
 arquivo.close()
 arquivo3 = json.loads(open("dados.json", "r").read())
-print(arquivo3[0])
-
-#arquivo3 = json.dumps(open("dados.json", "r").read())

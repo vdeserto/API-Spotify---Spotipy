@@ -10,5 +10,16 @@ sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
 arquivo = json.loads(open("dados.json", "r").read())
 
-for cantor in arquivo:
-    print(cantor[])
+for cantor in arquivo[:1]:
+    aux = (cantor["Eminem"][1])
+
+
+au = (aux["tracks"])
+au = au["items"]
+
+'''
+for tag in au:
+    artists = tag["artists"]
+    for artist in artists:
+        print(artist["name"])
+'''
