@@ -14,12 +14,12 @@ for cantor in arquivo[:1]:
     aux = (cantor["Eminem"][1])
 
 
+
 au = (aux["tracks"])
 au = au["items"]
 
-'''
+
 for tag in au:
     artists = tag["artists"]
     for artist in artists:
         print(artist["name"])
-'''
