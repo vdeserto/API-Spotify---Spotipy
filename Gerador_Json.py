@@ -20,9 +20,13 @@ alb = '0bW7duZq6GtoM8nEwtbc6F'
 
 arquivo.writelines ("[")
 
+#construir cabeçalho do JSON e gravar informacoes do artista
+
 def info_artist(id):
+    #pegar nome do artista
     r = sp.artist(id)
     result_json = sp.artist(id)
+    #transforma o return em formato JSON
     result = json.dumps(result_json)
     arquivo.writelines ("{\""+r["name"]+"\": [")
     arquivo.writelines (result)
