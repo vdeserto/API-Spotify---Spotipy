@@ -1,5 +1,6 @@
 import json
 import spotipy
+import os
 
 from spotipy.oauth2 import SpotifyClientCredentials
 
@@ -43,16 +44,18 @@ def show_artist_albums(id):
     	lista.extend(albums['items'])
     unique = set()  # skip duplicate albums
     arquivo.writelines ("{\"Alb\": [")
+    arquivo.writelines("{}")
     for album in lista:
         name = album['name'].lower()
         if not name in unique:
             info_album(album['id'])
-            arquivo.writelines (", ")
+
             unique.add(name)
+
     arquivo.writelines ("]}]}")
 
 def info_album(id):
-
+    arquivo.writelines (", ")
     result_json2 = sp.album(id)
     result = json.dumps(result_json2)
     arquivo.writelines (result)
