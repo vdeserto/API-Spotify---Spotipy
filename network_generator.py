@@ -15,8 +15,10 @@ for cantor in arquivo:
     for item in cantor:
         aux = (cantor[item][1])
         aux = (aux["Alb"])
-        for album in aux:
-            aux2 = album
+        for album in aux[1:]:
+            #ja consigo imprimir o nome dos albuns
+            print (album["name"])
+            #aux2 = album
 
 '''for cantor in arquivo[:1]:
     aux = (cantor["Eminem"][1])
