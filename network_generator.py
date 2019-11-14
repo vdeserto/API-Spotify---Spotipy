@@ -1,5 +1,6 @@
 import json
 import spotipy
+import networkx as nx
 from spotipy.oauth2 import SpotifyClientCredentials
 
 cid ="ec3e5e205b634356b5e4b82496b72dec"
@@ -10,6 +11,7 @@ sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
 arquivo = json.loads(open("dados.json", "r").read())
 
+G = nx.MultiGraph()
 
 for cantor in arquivo:
     lista = []
@@ -24,13 +26,11 @@ for cantor in arquivo:
                 artists = (item["artists"])
                 for name in artists:
                     lista.append(name["name"])
+    lista2 = []
+    for i in lista:
+        if i not in lista2:
+            lista2.append(i)
+    lista2.sort()
 
-
-lista2 = []
-for i in lista:
-    if i not in lista2:
-        lista2.append(i)
-lista2.sort()
-
-for i in lista2:
-    print(i)
+print(arquivo[0])
+#G.add_node()
