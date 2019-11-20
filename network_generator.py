@@ -24,8 +24,8 @@ for cantor in arquivo:
             #ja consigo imprimir o nome dos albuns
             track = (album["tracks"])
             track = track["items"]
-            for item in track:
-                artists = (item["artists"])
+            for tag in track:
+                artists = (tag["artists"])
                 for name in artists:
                     lista.append(name["name"])
 #armazenar os cantores secundarios em uma lista sem repetição
@@ -35,9 +35,7 @@ for cantor in arquivo:
             lista2.append(i)
     lista2.sort()
 #extrair o nome do cantor principal
-    for item in cantor:
-        pivo = item
-
+    pivo = item
 #Construcao do grafo
     G.add_node(pivo)
     for item in lista2:
@@ -47,6 +45,6 @@ for cantor in arquivo:
 
 #print((G.edges()))
 colors = [(random(), random(), random()) for _i in range(10)]
-nx.draw(G, node_color="white", with_labels = True)
+nx.draw(G, node_color="blue", with_labels = True)
 plt.savefig("simple_path.png") # save as png
 plt.show() # display
