@@ -50,3 +50,5 @@ colors = [(random(), random(), random()) for _i in range(10)]
 nx.draw(G, node_color="white", with_labels = True)
 plt.savefig("simple_path.png") # save as png
 plt.show() # display
+
+nx.write_gexf(G, "test.gexf")
