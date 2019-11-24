@@ -13,7 +13,7 @@ art = '7dGJo4pcD2V6oG8kP0tJRR'
 art2 = 'spotify:artist:3fMbdgg4jU18AjLCKBhRSm'
 tra = 'spotify:track:4xkOaSrkexMciUUogZKVTS'
 alb = 'spotify:album:1ATL5GLyefJaxhQzSPVrLX'
-
+#
 arquivo = open('dados.txt', 'w')
 
 '''Métodos usados com Tracks'''
@@ -115,6 +115,6 @@ def search(q):
         print(i, artist['name'])
         print(artist['popularity'], "\n")
 
-search("Eliana")
+search("Sandy e Junior")
 
-arquivo.close()
+#arquivo.close()
