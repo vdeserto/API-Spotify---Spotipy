@@ -115,6 +115,6 @@ def search(q):
         print(i, artist['name'])
         print(artist['popularity'], "\n")
 
-search("Sandy e Junior")
+search("A")
 
 #arquivo.close()
