@@ -1,12 +1,13 @@
-import json
-import spotipy
 import os
+import json
+import time
+import spotipy
 
 from spotipy.oauth2 import SpotifyClientCredentials
 
-cid ="ec3e5e205b634356b5e4b82496b72dec"
+cid ="34acb700848b455ebc323e943883d059"
 
-secret = "c4decac528e349c9b17d5662065dcfb5"
+secret = "a77e0f95dce246d29405e12cf40a1c88"
 
 client_credentials_manager = SpotifyClientCredentials(client_id=cid, client_secret=secret)
 
@@ -15,14 +16,9 @@ sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 arquivo = open("dados.json", "w")
 arquivo2 = open('cantores.txt', 'r')
 
-
-art = '7HGNYPmbDrMkylWqeFCOIQ'
-alb = '0bW7duZq6GtoM8nEwtbc6F'
-
 arquivo.writelines ("[")
 
 #construir cabeçalho do JSON e gravar informacoes do artista
-
 def info_artist(id):
     #pegar nome do artista
     r = sp.artist(id)
@@ -49,7 +45,6 @@ def show_artist_albums(id):
         name = album['name'].lower()
         if not name in unique:
             info_album(album['id'])
-
             unique.add(name)
 
     arquivo.writelines ("]}]}")
@@ -63,22 +58,38 @@ def info_album(id):
 
 def search(q):
     lista = []
-    results = sp.search(q, type='artist', limit=1)
+    results = sp.search(q, type='artist')
     results = results['artists']
-    results = results['items']
-    for artist in results:
+    lista.extend(results['items'])
+
+    while results['next']:
+        results = sp.next(results)
+        aux = results['artists']
+        lista.extend(aux['items'])
+        results = aux
+
+    i = 0
+    for artist in lista:
+        if(i !=0):
+            arquivo.writelines (", ")
         info_artist(artist['id'])
+        i = i +1
 
+#Inicio do codigo
+#medição de tempo
+inicio = time.time()
 
-
-i = 0
 for cantor in arquivo2:
-    if(i !=0):
-        arquivo.writelines (", ")
     search(cantor)
-    i = i + 1
 
 
 arquivo.writelines ("]")
 arquivo.close()
+
+fim = time.time()
+tf = round(((fim - inicio)/60)/60, 2)
+print(tf , "horas")
+
 arquivo3 = json.loads(open("dados.json", "r").read())
+
+#fim medicao de tempo

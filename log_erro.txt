@@ -1,0 +1,44 @@
+retrying ...1secs
+retrying ...1secs
+retrying ...1secs
+retrying ...1secs
+retrying ...1secs
+retrying ...1secs
+retrying ...1secs
+retrying ...1secs
+retrying ...1secs
+retrying ...1secs
+retrying ...1secs
+retrying ...1secs
+retrying ...1secs
+retrying ...1secs
+retrying ...2secs
+retrying ...1secs
+retrying ...1secs
+retrying ...2secs
+4.05 horas
+Traceback (most recent call last):
+  File "Gerador_Json.py", line 93, in <module>
+    arquivo3 = json.loads(open("dados.json", "r").read())
+  File "/usr/lib/python3.7/json/__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.7/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.7/json/decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting ':' delimiter: line 1 column 141294533 (char 141294532)
+
+
+
+1.04 horas
+Traceback (most recent call last):
+  File "Gerador_Json.py", line 93, in <module>
+    arquivo3 = json.loads(open("dados.json", "r").read())
+  File "/usr/lib/python3.7/json/__init__.py", line 348, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python3.7/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python3.7/json/decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+json.decoder.JSONDecodeError: Expecting ':' delimiter: line 1 column 10264677 (char 10264676)
+
