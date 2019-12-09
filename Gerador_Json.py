@@ -79,8 +79,12 @@ def search(q):
 #medição de tempo
 inicio = time.time()
 
+x = 0
 for cantor in arquivo2:
+    if (x != 0):
+        arquivo.writelines (", ")
     search(cantor)
+    x = x +1
 
 
 arquivo.writelines ("]")
