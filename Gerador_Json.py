@@ -21,11 +21,12 @@ arquivo.writelines ("[")
 #construir cabeçalho do JSON e gravar informacoes do artista
 def info_artist(id):
     #pegar nome do artista
-    r = sp.artist(id)
+    #r = sp.artist(id)
     result_json = sp.artist(id)
     #transforma o return em formato JSON
     result = json.dumps(result_json)
-    arquivo.writelines ("{\""+r["name"]+"\": [")
+    #raux = r["name"].replace('"', '')
+    arquivo.writelines ("{\""+id+"\": [")
     arquivo.writelines (result)
     arquivo.writelines (", ")
     show_artist_albums(id)
@@ -53,6 +54,7 @@ def info_album(id):
     arquivo.writelines (", ")
     result_json2 = sp.album(id)
     result = json.dumps(result_json2)
+    #tratar esse result
     arquivo.writelines (result)
 
 

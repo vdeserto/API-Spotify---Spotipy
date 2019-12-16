@@ -44,9 +44,10 @@ for cantor in arquivo:
         G.add_edge(item, pivo)
 
 #print((G.edges()))
+'''
 colors = [(random(), random(), random()) for _i in range(10)]
-nx.draw(G, node_color="blue", with_labels = True)
+nx.draw(G, node_color="blue", with_labels = False)
 plt.savefig("simple_path.png") # save as png
 plt.show() # display
-
+'''
 nx.write_gexf(G, "test.gexf")
