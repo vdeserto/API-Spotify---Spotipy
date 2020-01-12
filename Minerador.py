@@ -1,3 +1,4 @@
+#RASCUNHO DE APLICACAO PARA MINERACAO DE DADOS EM GRANDE QUANTIDADE
 import spotipy
 import sys
 from spotipy.oauth2 import SpotifyClientCredentials

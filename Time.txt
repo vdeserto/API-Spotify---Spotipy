@@ -1,0 +1,14 @@
+Adata = 3.85 hs
+Bdata = 3.42 hs
+Cdata = 3.15 hs
+Ddata = 3.19 hs
+Edata = 9.56 hs
+Fdata =
+Gdata = 3.27 hs
+Hdata = 1.78 hs
+Idata = 3.28 hs
+Jdata = 3.68 hs
+Kdata = 3.43 hs
+Ldata = 2.62 hs
+Mdata
+Zdata = 1.05 hs

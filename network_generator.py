@@ -11,7 +11,7 @@ secret = "c4decac528e349c9b17d5662065dcfb5"
 client_credentials_manager = SpotifyClientCredentials(client_id=cid, client_secret=secret)
 sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
-arquivo = json.loads(open("dados.json", "r").read())
+arquivo = json.loads(open("Zdata.json", "r").read())
 
 G = nx.MultiGraph()
 #Extrair nome dos cantores secundarios
@@ -20,7 +20,7 @@ for cantor in arquivo:
     for item in cantor:
         aux = (cantor[item][1])
         aux = (aux["Alb"])
-        for album in aux[1:]:
+        for album in aux:
             #ja consigo imprimir o nome dos albuns
             track = (album["tracks"])
             track = track["items"]
@@ -50,4 +50,4 @@ nx.draw(G, node_color="blue", with_labels = False)
 plt.savefig("simple_path.png") # save as png
 plt.show() # display
 '''
-nx.write_gexf(G, "test.gexf")
+nx.write_gexf(G, "G.gexf")
