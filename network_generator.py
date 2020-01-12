@@ -1,17 +1,10 @@
 import json
-import spotipy
 import networkx as nx
 import matplotlib.pyplot as plt
 from random import random
-from spotipy.oauth2 import SpotifyClientCredentials
 
-cid ="ec3e5e205b634356b5e4b82496b72dec"
-secret = "c4decac528e349c9b17d5662065dcfb5"
-
-client_credentials_manager = SpotifyClientCredentials(client_id=cid, client_secret=secret)
-sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
-
-arquivo = json.loads(open("Zdata.json", "r").read())
+arquivo = open("Hdata.json", "r")
+arquivo = (json.load(arquivo))
 
 G = nx.MultiGraph()
 #Extrair nome dos cantores secundarios
@@ -43,11 +36,4 @@ for cantor in arquivo:
         G.add_node(item)
         G.add_edge(item, pivo)
 
-#print((G.edges()))
-'''
-colors = [(random(), random(), random()) for _i in range(10)]
-nx.draw(G, node_color="blue", with_labels = False)
-plt.savefig("simple_path.png") # save as png
-plt.show() # display
-'''
 nx.write_gexf(G, "G.gexf")
