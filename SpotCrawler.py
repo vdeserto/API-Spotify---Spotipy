@@ -14,7 +14,7 @@ art2 = 'spotify:artist:3fMbdgg4jU18AjLCKBhRSm'
 tra = 'spotify:track:4xkOaSrkexMciUUogZKVTS'
 alb = 'spotify:album:1ATL5GLyefJaxhQzSPVrLX'
 #
-arquivo = open('dados.txt', 'w')
+arquivo = open('teste.txt', 'w')
 
 '''Métodos usados com Tracks'''
 def info_track(id):
